@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Handloom House — Woven by hand, worn with intent</title>
+<meta name="description" content="A handloom and khadi garment storefront." />
+<meta name="theme-color" content="#1B2A4A" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="selvedge selvedge-left" aria-hidden="true"></div>
+<div class="selvedge selvedge-right" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="wordmark">Handloom House</a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#collections">Collections</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#story">Our Loom</a>
+      <a href="orders.html">My Orders</a>
+      <a href="help.html">Help Desk</a>
+      <a href="#footer">Visit &amp; Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="search-toggle" aria-label="Search" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"/><line x1="14" y1="14" x2="18.5" y2="18.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn account-btn" id="account-toggle" aria-label="Account" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 17c1.2-3.4 4-5 6.5-5s5.3 1.6 6.5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cart-toggle" aria-label="Open cart" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 6H16.5L15.3 14.5C15.2 15.3 14.5 16 13.6 16H6.9C6.1 16 5.4 15.3 5.3 14.5L4 6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 6V4.5C7 3.1 8.1 2 9.5 2H10.5C11.9 2 13 3.1 13 4.5V6" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+  <div class="account-panel" id="account-panel" hidden></div>
+  <div class="search-bar" id="search-bar" hidden>
+    <input type="search" id="search-input" placeholder="Search for kurtas, sarees, stoles…" aria-label="Search products" />
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">A storefront for handwoven cloth</p>
+      <h1>Every thread knows which hand wove it.</h1>
+      <p class="hero-sub">Handloom House works directly with weaver collectives across Karnataka and Tamil Nadu — natural dyes, pit looms, and cloth that ages like it means it.</p>
+      <a href="#catalogue" class="btn btn-primary">Browse the catalogue</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/hero-studio.jpg" alt="Fashion design studio with garments, fabric, and pattern sketches on a worktable" />
+    </div>
+  </section>
+
+  <section class="strip">
+    <span>Natural dyes</span><span>·</span><span>Pit-loom woven</span><span>·</span><span>Direct from weavers</span><span>·</span><span>Cash on delivery</span>
+  </section>
+
+  <section class="collections" id="collections">
+    <h2>Shop by collection</h2>
+    <div class="collections-strip" id="collections-strip"></div>
+  </section>
+
+  <section class="catalogue" id="catalogue">
+    <div class="catalogue-head">
+      <h2>The catalogue</h2>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter by category">
+        <button class="filter-chip is-active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="Kurtas">Kurtas</button>
+        <button class="filter-chip" data-filter="Sarees">Sarees</button>
+        <button class="filter-chip" data-filter="Stoles & Dupattas">Stoles &amp; Dupattas</button>
+        <button class="filter-chip" data-filter="Shirts">Shirts</button>
+        <button class="filter-chip" data-filter="Coats">Coats</button>
+        <button class="filter-chip" data-filter="Pants">Pants</button>
+        <button class="filter-chip" data-filter="Home Textiles">Home Textiles</button>
+      </div>
+      <div class="filters filters-gender" id="gender-filters" role="tablist" aria-label="Filter by gender">
+        <button class="filter-chip is-active" data-gender="all">All genders</button>
+        <button class="filter-chip" data-gender="Women">Women</button>
+        <button class="filter-chip" data-gender="Men">Men</button>
+      </div>
+    </div>
+    <div class="collection-chip" id="collection-chip" hidden>
+      <span>Showing:</span> <span class="collection-chip-label"></span>
+      <button aria-label="Clear collection filter">✕</button>
+    </div>
+    <p class="empty-note" id="empty-note" hidden>No pieces match that search — try another word.</p>
+    <div class="product-grid" id="product-grid"></div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="story-inner">
+      <h2>Why the selvedge is the signature</h2>
+      <p>On a real bolt of handloom cloth, the coloured stripe running down the edge — the selvedge — is the weaver's signature: it names the loom, the collective, sometimes the weaver by hand. We've borrowed that stripe for this page, because nothing here is generic stock; every piece is tied to the loom that made it, and every order supports the weaver directly.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <p class="wordmark small">Handloom House</p>
+      <p>Deralakatte, Mangaluru, Karnataka</p>
+      <p>hello@handloomhouse.example</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Catalogue</p>
+      <a href="#catalogue">All pieces</a>
+      <a href="#catalogue">Kurtas</a>
+      <a href="#catalogue">Sarees</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Studio</p>
+      <a href="#story">Our loom</a>
+      <a href="#footer">Contact</a>
+      <a href="orders.html">Track your order</a>
+      <a href="help.html">Help Desk</a>
+      <a href="security.html">Security overview</a>
+    </div>
+  </div>
+  <p class="footer-fine">This is a student project demo storefront — no real payments are processed.</p>
+</footer>
+
+<!-- Cart drawer -->
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Your cart</h2>
+    <button class="icon-btn" id="cart-close" aria-label="Close cart">
+      <svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="cart-items"></div>
+  <div class="drawer-foot">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total">₹0</span>
+    </div>
+    <button class="btn btn-primary btn-block" id="checkout-btn" disabled>Proceed to checkout</button>
+  </div>
+</aside>
+
+<!-- Checkout modal -->
+<div class="modal-backdrop" id="checkout-backdrop" hidden>
+  <div class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+    <button class="icon-btn modal-close" id="checkout-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <div id="checkout-content">
+      <h2 id="checkout-title">Delivery details</h2>
+      <form id="checkout-form">
+        <label>Full name<input type="text" name="name" required /></label>
+        <label>Delivery address<textarea name="address" rows="2" required></textarea></label>
+        <label>Phone<input type="tel" name="phone" required pattern="[0-9]{10}" placeholder="10-digit number" /></label>
+        <fieldset>
+          <legend>Payment</legend>
+          <label class="radio-label"><input type="radio" name="payment" value="cod" checked /> Cash on delivery</label>
+          <label class="radio-label"><input type="radio" name="payment" value="upi" /> UPI</label>
+        </fieldset>
+        <button type="submit" class="btn btn-primary btn-block">Place order — <span id="checkout-total">₹0</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/shared.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

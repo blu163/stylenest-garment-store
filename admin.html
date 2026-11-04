@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Handloom House — Admin</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+
+<div class="selvedge selvedge-left" aria-hidden="true"></div>
+<div class="selvedge selvedge-right" aria-hidden="true"></div>
+
+<!-- Login screen -->
+<section class="admin-login-screen" id="admin-login-screen">
+  <div class="admin-login-card">
+    <p class="wordmark">Handloom House</p>
+    <p class="admin-login-sub">Admin dashboard</p>
+    <form id="admin-login-form">
+      <label>Username<input type="text" name="username" required autocomplete="username" value="aleena" /></label>
+      <label>Password<input type="password" name="password" required autocomplete="current-password" value="aleena1234" /></label>
+      <p class="account-error" id="admin-login-error" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block">Log in</button>
+    </form>
+    <p class="admin-login-hint">First run? Default login is <strong>aleena</strong> / <strong>aleena1234</strong> — check the terminal running the server for a reminder.</p>
+    <a href="index.html" class="admin-back-link">← Back to storefront</a>
+  </div>
+</section>
+
+<!-- Dashboard -->
+<section class="admin-dashboard" id="admin-dashboard" hidden>
+  <header class="admin-header">
+    <p class="wordmark">Handloom House <span class="admin-tag">Admin</span></p>
+    <nav class="admin-tabs">
+      <button class="admin-tab is-active" data-panel="products">Products</button>
+      <button class="admin-tab" data-panel="customers">Customers</button>
+      <button class="admin-tab" data-panel="orders">Orders</button>
+      <button class="admin-tab" data-panel="tickets">Help Desk <span class="admin-tab-badge" id="tickets-badge" hidden>0</span></button>
+    </nav>
+    <div class="admin-header-actions">
+      <a href="index.html" class="admin-view-store">View storefront</a>
+      <button class="btn" id="admin-logout-btn">Log out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+
+    <section class="admin-panel is-active" id="panel-products">
+      <div class="admin-panel-head">
+        <h2>Products</h2>
+        <button class="btn btn-primary" id="new-product-btn">+ Add product</button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="products-table">
+          <thead>
+            <tr><th>Name</th><th>Category</th><th>Collection</th><th>Price</th><th>Sizes</th><th></th></tr>
+          </thead>
+          <tbody id="products-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="panel-customers">
+      <div class="admin-panel-head">
+        <h2>Customers</h2>
+        <span class="admin-count" id="customers-count"></span>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th></tr></thead>
+          <tbody id="customers-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="panel-orders">
+      <div class="admin-panel-head">
+        <h2>Orders</h2>
+        <div class="admin-panel-tools">
+          <label class="admin-filter-label">Status
+            <select class="admin-filter" id="orders-filter">
+              <option value="all">All</option>
+              <option value="placed">Placed</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="packed">Packed</option>
+              <option value="shipped">Shipped</option>
+              <option value="out_for_delivery">Out for Delivery</option>
+              <option value="delivered">Delivered</option>
+            </select>
+          </label>
+          <span class="admin-count" id="orders-count"></span>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Placed</th><th>Status</th><th>Expected</th><th>Tracking ID</th><th></th></tr></thead>
+          <tbody id="orders-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="panel-tickets">
+      <div class="admin-panel-head">
+        <h2>Help Desk</h2>
+        <div class="admin-panel-tools">
+          <label class="admin-filter-label">Status
+            <select class="admin-filter" id="tickets-filter">
+              <option value="all">All</option>
+              <option value="open">Open</option>
+              <option value="in_progress">In progress</option>
+              <option value="resolved">Resolved</option>
+              <option value="closed">Closed</option>
+            </select>
+          </label>
+          <span class="admin-count" id="tickets-count"></span>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Ticket</th><th>Customer</th><th>Order</th><th>Type</th><th>Subject</th><th>Status</th><th>Last activity</th><th></th></tr></thead>
+          <tbody id="tickets-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</section>
+
+<!-- Add / edit product modal -->
+<div class="modal-backdrop" id="product-form-backdrop" hidden>
+  <div class="checkout-modal admin-product-modal" role="dialog" aria-modal="true">
+    <button class="icon-btn modal-close" id="product-form-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <h2 id="product-form-title">Add product</h2>
+    <form id="product-form">
+      <input type="hidden" name="id" />
+      <label>Name<input type="text" name="name" required /></label>
+      <label>Category
+        <select name="category" id="product-category-select" required>
+          <option>Kurtas</option>
+          <option>Sarees</option>
+          <option>Stoles & Dupattas</option>
+          <option>Shirts</option>
+          <option>Coats</option>
+          <option>Pants</option>
+          <option>Home Textiles</option>
+          <option value="__other__">Other — type my own…</option>
+        </select>
+      </label>
+      <label class="category-other-label" id="category-other-wrap" hidden>Custom category name
+        <input type="text" id="product-category-other" placeholder="e.g. Accessories" />
+      </label>
+      <label>Gender
+        <select name="gender" id="product-gender-select">
+          <option value="">Not applicable (e.g. home textiles)</option>
+          <option value="Men">Men</option>
+          <option value="Women">Women</option>
+        </select>
+      </label>
+      <label>Icon style
+        <select name="type" id="product-type-select">
+          <option value="kurta">Kurta</option>
+          <option value="saree">Saree</option>
+          <option value="stole">Stole</option>
+          <option value="shirt">Shirt</option>
+          <option value="coat">Coat</option>
+          <option value="pants">Pants</option>
+          <option value="home">Home textile</option>
+          <option value="__other__">Other — type my own…</option>
+        </select>
+      </label>
+      <label class="category-other-label" id="type-other-wrap" hidden>Custom icon style label
+        <input type="text" id="product-type-other" placeholder="e.g. dress" />
+        <span class="field-hint">Note: this only labels the type — without a matching shape, the fallback icon (shown when there's no photo) will still look like the Kurta silhouette. Uploading a real photo is the safest bet for a custom item.</span>
+      </label>
+      <label>Collection
+        <select name="collection" id="product-collection-select">
+          <option value="new-season">New This Season</option>
+          <option value="wedding-edit">The Wedding Edit</option>
+          <option value="monsoon-layers">Monsoon Layers</option>
+          <option value="winter-warmers">Winter Warmers</option>
+          <option value="everyday-classics">Everyday Classics</option>
+          <option value="__other__">Other — type my own…</option>
+        </select>
+      </label>
+      <label class="category-other-label" id="collection-other-wrap" hidden>Custom collection name
+        <input type="text" id="product-collection-other" placeholder="e.g. Festive Edit" />
+        <span class="field-hint">Note: a custom collection won't get its own tile under "Shop by collection" on the homepage — it'll still show up in the catalogue grid and category filters as normal.</span>
+      </label>
+      <label>Price (₹)<input type="number" name="price" min="0" step="1" required /></label>
+      <label>Sizes (comma separated)<input type="text" name="sizes" placeholder="S, M, L, XL" /></label>
+      <label>Icon colour<input type="color" name="color" value="#1B2A4A" /></label>
+      <label>Photos (you can select more than one)
+        <input type="file" id="product-image-file" accept="image/png,image/jpeg,image/webp,image/gif" multiple />
+      </label>
+      <div class="image-upload-status" id="image-upload-status"></div>
+      <div class="image-gallery-edit" id="image-gallery-edit"></div>
+      <label class="image-path-label">Photo paths (auto-filled after upload — first one is the main photo)
+        <input type="hidden" name="images" id="product-images-json" value="[]" />
+        <input type="hidden" name="image" id="product-image-path" />
+      </label>
+      <label>Description<textarea name="desc" rows="3"></textarea></label>
+      <p class="account-error" id="product-form-error" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="product-form-submit">Add product</button>
+    </form>
+  </div>
+</div>
+
+<!-- Manage order modal: status, tracking, courier, delivery date -->
+<div class="modal-backdrop" id="order-modal-backdrop" hidden>
+  <div class="checkout-modal admin-order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
+    <button class="icon-btn modal-close" id="order-modal-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <h2 id="order-modal-title">Manage order</h2>
+    <div id="order-modal-summary"></div>
+    <form class="admin-form" id="order-form">
+      <input type="hidden" name="id" />
+      <label>Order status
+        <select name="status">
+          <option value="placed">Placed</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="packed">Packed</option>
+          <option value="shipped">Shipped</option>
+          <option value="out_for_delivery">Out for Delivery</option>
+          <option value="delivered">Delivered</option>
+        </select>
+      </label>
+      <label>Expected delivery date
+        <input type="date" name="expectedDelivery" />
+        <span class="field-hint">Leave empty to show “To be confirmed” to the customer.</span>
+      </label>
+      <label>Tracking ID
+        <input type="text" name="trackingId" required minlength="2" maxlength="40" />
+        <span class="field-hint">Auto-assigned when the order was placed. Replace it with the courier's consignment / AWB number if you have one.</span>
+      </label>
+      <label>Courier name
+        <input type="text" name="courierName" maxlength="60" placeholder="e.g. India Post, DTDC, Delhivery" />
+      </label>
+      <label>Courier contact number
+        <input type="tel" name="courierPhone" maxlength="20" placeholder="Optional" />
+      </label>
+      <label>Courier tracking link
+        <input type="url" name="courierUrl" maxlength="300" placeholder="https://… (optional)" />
+      </label>
+      <label>Note for the customer
+        <textarea name="shippingNote" rows="2" maxlength="300" placeholder="Optional — e.g. “Handed to the courier at Mangaluru hub”"></textarea>
+      </label>
+      <p class="account-error" id="order-form-error" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="order-form-submit">Save changes</button>
+    </form>
+  </div>
+</div>
+
+<!-- Help Desk ticket modal: conversation + reply -->
+<div class="modal-backdrop" id="ticket-modal-backdrop" hidden>
+  <div class="checkout-modal admin-order-modal" role="dialog" aria-modal="true" aria-labelledby="ticket-modal-title">
+    <button class="icon-btn modal-close" id="ticket-modal-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <div id="ticket-modal-body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

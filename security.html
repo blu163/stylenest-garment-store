@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Security Overview — Handloom House</title>
+<meta name="description" content="A mini project on the security tools used to build Handloom House." />
+<meta name="theme-color" content="#1B2A4A" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/security.css" />
+</head>
+<body>
+
+<div class="selvedge selvedge-left" aria-hidden="true"></div>
+<div class="selvedge selvedge-right" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="wordmark">Handloom House</a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html#catalogue">Catalogue</a>
+      <a href="index.html#footer">Visit &amp; Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="sec-hero">
+    <p class="eyebrow">Mini project</p>
+    <h1>Security Tools Behind This Site</h1>
+    <p class="sec-hero-sub">A plain-language walkthrough of every security measure protecting this storefront and admin dashboard — with the attacks each one stops, and the exact requests used to test them.</p>
+    <a class="btn btn-primary" href="downloads/security-mini-project.pptx" download>Download the presentation (.pptx)</a>
+    <a class="btn btn-secondary" href="downloads/security-mini-project.docx" download>Download the report (.docx)</a>
+  </section>
+
+  <section class="sec-glance">
+    <h2>At a glance</h2>
+    <div class="sec-grid">
+      <div class="sec-card">
+        <span class="sec-icon">🛡️</span>
+        <h3>Helmet</h3>
+        <p>Protective HTTP headers on every response.</p>
+      </div>
+      <div class="sec-card">
+        <span class="sec-icon">⏱️</span>
+        <h3>express-rate-limit</h3>
+        <p>Blocks brute-force login attempts.</p>
+      </div>
+      <div class="sec-card">
+        <span class="sec-icon">🔒</span>
+        <h3>csurf</h3>
+        <p>Blocks forged cross-site requests.</p>
+      </div>
+      <div class="sec-card">
+        <span class="sec-icon">🔑</span>
+        <h3>crypto (scrypt)</h3>
+        <p>Salted, slow password hashing.</p>
+      </div>
+      <div class="sec-card">
+        <span class="sec-icon">🍪</span>
+        <h3>Session cookies</h3>
+        <p>httpOnly, SameSite tokens.</p>
+      </div>
+      <div class="sec-card">
+        <span class="sec-icon">✅</span>
+        <h3>Role checks</h3>
+        <p>Server-side authorization rules.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-detail">
+    <h2>Helmet — HTTP security headers</h2>
+    <p class="sec-lede">Every response carries headers that tell the browser how to behave safely, before any attack script even runs.</p>
+    <div class="sec-row"><strong>Content-Security-Policy</strong><span>Only allows scripts, styles, and images from the site's own origin — blocks injected scripts.</span></div>
+    <div class="sec-row"><strong>X-Frame-Options</strong><span>Stops other sites from embedding this page in an invisible iframe (clickjacking).</span></div>
+    <div class="sec-row"><strong>X-Content-Type-Options: nosniff</strong><span>Stops the browser from misinterpreting a file's type in an exploitable way.</span></div>
+    <div class="sec-row"><strong>Strict-Transport-Security</strong><span>Tells browsers to always use HTTPS once the site is deployed with it.</span></div>
+  </section>
+
+  <section class="sec-detail">
+    <h2>express-rate-limit — brute-force protection</h2>
+    <p class="sec-lede">Login, signup, and admin-login are capped at <strong>20 attempts per 15 minutes per IP address</strong>. Past that, the server rejects the request before ever checking the password.</p>
+    <pre class="sec-code">HTTP/1.1 429 Too Many Requests
+{ "error": "Too many attempts. Please wait a while and try again." }</pre>
+  </section>
+
+  <section class="sec-detail sec-compare">
+    <h2>csurf — Cross-Site Request Forgery protection</h2>
+    <p class="sec-lede">The attack: a malicious page open in another tab quietly submits a request using <em>your</em> logged-in session — without you clicking anything.</p>
+    <div class="sec-compare-grid">
+      <div class="sec-compare-card sec-bad">
+        <h3>Without protection</h3>
+        <ul>
+          <li>Admin is logged into the dashboard</li>
+          <li>Admin opens a malicious link in another tab</li>
+          <li>That page silently submits a request to delete a product</li>
+          <li>The browser auto-attaches the admin's session cookie</li>
+          <li><strong>Product gets deleted — admin never clicked anything on the real site</strong></li>
+        </ul>
+      </div>
+      <div class="sec-compare-card sec-good">
+        <h3>With csurf</h3>
+        <ul>
+          <li>The page first fetches a one-time token from <code>GET /api/csrf-token</code></li>
+          <li>Every POST / PUT / DELETE must include that token in a header</li>
+          <li>The malicious page has no way to read or guess that token</li>
+          <li>Its forged request arrives without a valid token</li>
+          <li><strong>Server responds 403 — request rejected before it does anything</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-detail">
+    <h2>Password security — Node's built-in crypto</h2>
+    <p class="sec-lede">Passwords are never stored as plain text — no separate library needed, just Node's own <code>crypto</code> module.</p>
+    <div class="sec-steps">
+      <div class="sec-step"><span>1</span><h3>Salt</h3><p>A random string per user, so identical passwords produce completely different stored values.</p></div>
+      <div class="sec-step"><span>2</span><h3>scrypt hash</h3><p>A deliberately slow, memory-heavy algorithm that makes brute-forcing expensive.</p></div>
+      <div class="sec-step"><span>3</span><h3>timingSafeEqual</h3><p>Compares hashes in constant time, so timing differences can't leak the answer.</p></div>
+    </div>
+    <p class="sec-note"><strong>Signup also requires a strong password:</strong> at least 8 characters, with an uppercase letter, a lowercase letter, a number, and a special character.</p>
+  </section>
+
+  <section class="sec-detail">
+    <h2>Session cookies — httpOnly &amp; SameSite</h2>
+    <div class="sec-two-col">
+      <div><h3>HttpOnly</h3><p>Client-side JavaScript cannot read this cookie at all — so even a malicious script on the page couldn't steal the login token.</p></div>
+      <div><h3>SameSite = Lax</h3><p>The cookie isn't sent along with requests from other websites — an extra layer against forged cross-site requests.</p></div>
+    </div>
+  </section>
+
+  <section class="sec-detail">
+    <h2>Server-side authorization rules</h2>
+    <div class="sec-row"><strong>Admin-only actions</strong><span>Add, edit, delete products, and view all customers/orders require an active admin session.</span></div>
+    <div class="sec-row"><strong>Customer-only actions</strong><span>Placing an order and viewing order history require an active customer session tied to that account.</span></div>
+    <div class="sec-row"><strong>Purchase-gated reviews</strong><span>A customer can only review a product after their order history shows they actually bought it — checked against real order records, not a hidden UI flag.</span></div>
+  </section>
+
+  <section class="sec-pipeline">
+    <h2>How a request gets checked</h2>
+    <div class="sec-pipeline-row">
+      <div class="sec-pipe-step">1<br/>Helmet</div>
+      <div class="sec-pipe-arrow">→</div>
+      <div class="sec-pipe-step">2<br/>Rate Limiter</div>
+      <div class="sec-pipe-arrow">→</div>
+      <div class="sec-pipe-step">3<br/>CSRF Check</div>
+      <div class="sec-pipe-arrow">→</div>
+      <div class="sec-pipe-step">4<br/>Auth Check</div>
+      <div class="sec-pipe-arrow">→</div>
+      <div class="sec-pipe-step sec-pipe-final">5<br/>Route Handler</div>
+    </div>
+    <p class="sec-lede">A request only reaches the actual product/order/review logic if it clears every stage above.</p>
+  </section>
+
+  <section class="sec-detail">
+    <h2>Testing &amp; validation</h2>
+    <p class="sec-lede">Each control was exercised with real HTTP requests, not just read from the code.</p>
+    <table class="sec-table">
+      <thead><tr><th>Test performed</th><th>Server response</th></tr></thead>
+      <tbody>
+        <tr><td>POST to admin-login without a CSRF token</td><td>403 Invalid security token</td></tr>
+        <tr><td>POST to admin-login with a valid CSRF token</td><td>200 Logged in</td></tr>
+        <tr><td>21st login attempt within 15 minutes</td><td>429 Too many attempts</td></tr>
+        <tr><td>Signup with a weak password</td><td>400 Password policy not met</td></tr>
+        <tr><td>Review submitted without ordering the product</td><td>403 Review blocked</td></tr>
+        <tr><td>Review submitted after ordering the product</td><td>201 Review saved</td></tr>
+        <tr><td>Submitting the same review twice</td><td>Updates the existing review</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sec-detail">
+    <h2>Limitations &amp; future work</h2>
+    <div class="sec-grid sec-grid-2">
+      <div class="sec-card sec-limit"><h3>No HTTPS yet</h3><p>Fine for local testing; a real deployment needs TLS, usually via the hosting platform.</p></div>
+      <div class="sec-card sec-limit"><h3>Sessions live in memory</h3><p>Restarting the server logs everyone out — a real deployment should persist sessions.</p></div>
+      <div class="sec-card sec-limit"><h3>csurf is unmaintained upstream</h3><p>Still works correctly today; csrf-csrf is the actively maintained successor.</p></div>
+      <div class="sec-card sec-limit"><h3>No session expiry yet</h3><p>Sessions last until logout or restart — an idle timeout would tighten this further.</p></div>
+    </div>
+  </section>
+
+  <section class="sec-closing">
+    <p>Security isn't a feature — it's a habit built into every route.</p>
+    <a class="btn btn-primary" href="downloads/security-mini-project.pptx" download>Download the presentation (.pptx)</a>
+    <a class="btn btn-secondary" href="downloads/security-mini-project.docx" download>Download the report (.docx)</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <p class="wordmark small">Handloom House</p>
+      <p><a href="index.html">← Back to the storefront</a></p>
+    </div>
+  </div>
+  <p class="footer-fine">This is a student project demo storefront — no real payments are processed.</p>
+</footer>
+
+</body>
+</html>

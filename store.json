@@ -1,0 +1,670 @@
+{
+  "admin": {
+    "username": "aleena",
+    "salt": "32fee7af9525f3dcfceeef735b817460",
+    "hash": "9fe1724dcd52b5c7fdb3cf2df69a8ec3d26706e2f79cc2bd113666615ff270b192f2088e9ab4e20a995d2a9472834d3afb2056f299105076d07d4e79834d586a"
+  },
+  "customers": [
+    {
+      "id": "cmub8ick44e4l",
+      "name": "Aleena Antony",
+      "email": "aleena54321antony@gmail.com",
+      "phone": "6282898955",
+      "salt": "ec077cf74a79a21c28a939199eb1ba13",
+      "hash": "81b3110956f25cbe77cf5263a0881d04d916c0dd83834c873f411d9f8dc21c555245f79ee1cdef0de1cb2972c94e99dcef461bdd27909e5560d81c6996a85614",
+      "createdAt": "2026-09-21T12:41:41.140Z"
+    },
+    {
+      "id": "cmunrouqhv0r7",
+      "name": "Aleena Antony",
+      "email": "aleena54321tfhtf@gmail.com",
+      "phone": "8592934327",
+      "salt": "cbb668a78932c1803ff46de0466a38f2",
+      "hash": "cb2ffcba5f505f5527d8c4af9e23cf4521d36dde300c49d3c16dffcf8d2692ddf86537ce4c23d134089ba0a0d34750773f4047fa69a4455f375e4d8e3c5d1e4b",
+      "createdAt": "2026-09-30T07:11:51.449Z"
+    },
+    {
+      "id": "cmv0ta533xjhz",
+      "name": "Aleena Antony",
+      "email": "alee54678@gmail.com",
+      "phone": "8592934327",
+      "salt": "8268687691fa3393e11090afdce0daf8",
+      "hash": "cb880a48ae97183cb8dff2172fa222c8aac410a77a4201b623fec384653638e10f8d06f46827c2a3cf13b8265bc8982418d90b68b430943c7d7675205527159c",
+      "createdAt": "2026-10-09T10:17:24.543Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "Indigo Ikat Kurta",
+      "category": "Kurtas",
+      "type": "kurta",
+      "color": "#1b2a4a",
+      "price": 1890,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "new-season",
+      "desc": "Double-ikat cotton kurta from a Koppal weaver collective, dyed in three rounds of natural indigo. Straight cut, side slits, mother-of-pearl buttons.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-23-213320.png",
+        "images/screenshot-2026-09-23-213401.png",
+        "images/screenshot-2026-09-23-213412.png"
+      ],
+      "image": "images/screenshot-2026-09-23-213320.png"
+    },
+    {
+      "id": "p2",
+      "name": "Turmeric Field Kurta",
+      "category": "Kurtas",
+      "type": "kurta",
+      "color": "#fad729",
+      "price": 1750,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Handspun khadi kurta dyed with turmeric and pomegranate rind. Breathable summer weave, mandarin collar.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-23-213610.png",
+        "images/screenshot-2026-09-23-213618.png",
+        "images/screenshot-2026-09-23-213629.png"
+      ],
+      "image": "images/screenshot-2026-09-23-213610.png"
+    },
+    {
+      "id": "p3",
+      "name": "Madder Root Kurta",
+      "category": "Kurtas",
+      "type": "kurta",
+      "color": "#8b3a3a",
+      "price": 2100,
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "winter-warmers",
+      "desc": "Heavier winter-weight cotton kurta, madder-root dyed to a deep brick red, with hand-run kantha stitching along the yoke.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-214145.png",
+        "images/screenshot-2026-09-25-214201.png"
+      ],
+      "image": "images/screenshot-2026-09-25-214145.png"
+    },
+    {
+      "id": "p4",
+      "name": "Wedding Zari Kurta",
+      "category": "Kurtas",
+      "type": "kurta",
+      "color": "#fff199",
+      "price": 3450,
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "wedding-edit",
+      "desc": "Cream silk-cotton blend kurta with hand-woven zari border along the placket and hem, for festive occasions.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-23-214456.png",
+        "images/screenshot-2026-09-23-214506.png"
+      ],
+      "image": "images/screenshot-2026-09-23-214456.png"
+    },
+    {
+      "id": "p5",
+      "name": "Monsoon Grey Kurta",
+      "category": "Kurtas",
+      "type": "kurta",
+      "color": "#4b6b4b",
+      "price": 1650,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "monsoon-layers",
+      "desc": "Quick-drying handloom cotton kurta in a muted grey-green, treated to resist monsoon staining without losing its handfeel.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-23-214820.png",
+        "images/screenshot-2026-09-23-214828.png",
+        "images/screenshot-2026-09-23-214835.png"
+      ],
+      "image": "images/screenshot-2026-09-23-214820.png"
+    },
+    {
+      "id": "p6",
+      "name": "Chandrakala Silk Saree",
+      "category": "Sarees",
+      "type": "saree",
+      "color": "#8b3a3a",
+      "price": 6800,
+      "sizes": [
+        "Free size"
+      ],
+      "collection": "wedding-edit",
+      "desc": "Handwoven mulberry silk saree from Kanchipuram, black-and-red temple border, zari accents along the pallu.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-24-151408.png",
+        "images/screenshot-2026-09-24-151345.png",
+        "images/screenshot-2026-09-24-151419.png"
+      ],
+      "image": "images/screenshot-2026-09-24-151408.png"
+    },
+    {
+      "id": "p7",
+      "name": "Indigo Resist Saree",
+      "category": "Sarees",
+      "type": "saree",
+      "color": "#1b2a4a",
+      "price": 4200,
+      "sizes": [
+        "Free size"
+      ],
+      "collection": "new-season",
+      "desc": "Cotton saree in a resist-dye indigo pattern, woven on a pit loom in Ilkal, light enough for daily wear.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-24-151530.png",
+        "images/screenshot-2026-09-24-151541.png"
+      ],
+      "image": "images/screenshot-2026-09-24-151530.png"
+    },
+    {
+      "id": "p8",
+      "name": "Sundried Cotton Saree",
+      "category": "Sarees",
+      "type": "saree",
+      "color": "#abdeab",
+      "price": 3650,
+      "sizes": [
+        "Free size"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Green vegetable-dyed handloom cotton saree with a plain weave body and a woven check border.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-24-151632.png",
+        "images/screenshot-2026-09-24-151650.png",
+        "images/screenshot-2026-09-24-151641.png",
+        "images/screenshot-2026-09-24-151701.png"
+      ],
+      "image": "images/screenshot-2026-09-24-151632.png"
+    },
+    {
+      "id": "p9",
+      "name": "Bridal Madder Silk Saree",
+      "category": "Sarees",
+      "type": "saree",
+      "color": "#8b3a3a",
+      "price": 8900,
+      "sizes": [
+        "Free size"
+      ],
+      "collection": "wedding-edit",
+      "desc": "Heavy silk saree, madder and lac dyed to a deep bridal red, woven with a wide gold zari border.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-24-152013.png",
+        "images/screenshot-2026-09-24-152025.png"
+      ],
+      "image": "images/screenshot-2026-09-24-152013.png"
+    },
+    {
+      "id": "p10",
+      "name": "Mustard Wool Stole",
+      "category": "Stoles & Dupattas",
+      "type": "stole",
+      "color": "#d9a441",
+      "price": 1450,
+      "sizes": [
+        "Free size"
+      ],
+      "collection": "winter-warmers",
+      "desc": "Pashmina-blend wool stole, hand-loomed in a herringbone weave, fringed edges.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-25-173732.png",
+        "images/screenshot-2026-09-25-173718.png",
+        "images/screenshot-2026-09-25-173743.png"
+      ],
+      "image": "images/screenshot-2026-09-25-173732.png"
+    },
+    {
+      "id": "p11",
+      "name": "Indigo Block-Print Dupatta",
+      "category": "Stoles & Dupattas",
+      "type": "stole",
+      "color": "#1b2a4a",
+      "price": 990,
+      "sizes": [
+        "Free size"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Cotton mulmul dupatta, hand block-printed in Bagru style with a repeating floral motif.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-25-173931.png",
+        "images/screenshot-2026-09-25-173936.png",
+        "images/screenshot-2026-09-25-173945.png"
+      ],
+      "image": "images/screenshot-2026-09-25-173931.png"
+    },
+    {
+      "id": "p12",
+      "name": "Rust Cotton Stole",
+      "category": "Stoles & Dupattas",
+      "type": "stole",
+      "color": "#8b3a3a",
+      "price": 850,
+      "sizes": [
+        "Free size"
+      ],
+      "collection": "monsoon-layers",
+      "desc": "Lightweight handloom cotton stole, rust dyed with madder and alum mordant.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-25-174114.png",
+        "images/screenshot-2026-09-25-174224.png"
+      ],
+      "image": "images/screenshot-2026-09-25-174114.png"
+    },
+    {
+      "id": "p13",
+      "name": "Charcoal Weave Shirt",
+      "category": "Shirts",
+      "type": "shirt",
+      "color": "#26221d",
+      "price": 2250,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Handloom cotton shirt in a slubby charcoal weave, standard collar, coconut-shell buttons.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-174345.png",
+        "images/screenshot-2026-09-25-174358.png",
+        "images/screenshot-2026-09-25-174406.png"
+      ],
+      "image": "images/screenshot-2026-09-25-174345.png"
+    },
+    {
+      "id": "p14",
+      "name": "Ivory Khadi Shirt",
+      "category": "Shirts",
+      "type": "shirt",
+      "color": "#f3ede1",
+      "price": 1990,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "new-season",
+      "desc": "Undyed handspun khadi shirt, breathable plain weave, relaxed fit.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-174541.png",
+        "images/screenshot-2026-09-25-174611.png",
+        "images/screenshot-2026-09-25-174658.png"
+      ],
+      "image": "images/screenshot-2026-09-25-174541.png"
+    },
+    {
+      "id": "p15",
+      "name": "Indigo Check Shirt",
+      "category": "Shirts",
+      "type": "shirt",
+      "color": "#1b2a4a",
+      "price": 2100,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Yarn-dyed handloom cotton shirt in a fine indigo-and-white check, single chest pocket.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-174804.png",
+        "images/screenshot-2026-09-25-174812.png",
+        "images/screenshot-2026-09-25-174822.png",
+        "images/screenshot-2026-09-25-174832.png"
+      ],
+      "image": "images/screenshot-2026-09-25-174804.png"
+    },
+    {
+      "id": "p16",
+      "name": "Monsoon Linen Shirt",
+      "category": "Shirts",
+      "type": "shirt",
+      "color": "#4b6b4b",
+      "price": 2050,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "monsoon-layers",
+      "desc": "Handloom cotton-linen shirt, loosely woven for quick drying, in a muted moss green.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-174941.png",
+        "images/screenshot-2026-09-25-174945.png",
+        "images/screenshot-2026-09-25-174954.png",
+        "images/screenshot-2026-09-25-174958.png"
+      ],
+      "image": "images/screenshot-2026-09-25-174941.png"
+    },
+    {
+      "id": "p17",
+      "name": "Indigo Handloom Coat",
+      "category": "Coats",
+      "type": "coat",
+      "color": "#1b2a4a",
+      "price": 4800,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "winter-warmers",
+      "desc": "Unlined handloom cotton overcoat, double-layered indigo weave, notch lapel, for layering through winter mornings.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-175142.png",
+        "images/screenshot-2026-09-25-175126.png",
+        "images/screenshot-2026-09-25-175202.png"
+      ],
+      "image": "images/screenshot-2026-09-25-175142.png"
+    },
+    {
+      "id": "p18",
+      "name": "Charcoal Wool-Blend Coat",
+      "category": "Coats",
+      "type": "coat",
+      "color": "#26221d",
+      "price": 5600,
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "winter-warmers",
+      "desc": "Handwoven wool-cotton blend coat, brushed for warmth, horn buttons, straight silhouette.",
+      "gender": "Women",
+      "images": [
+        "images/screenshot-2026-09-25-213026.png",
+        "images/screenshot-2026-09-25-212337.png",
+        "images/screenshot-2026-09-25-212343.png",
+        "images/screenshot-2026-09-25-212352.png"
+      ],
+      "image": "images/screenshot-2026-09-25-213026.png"
+    },
+    {
+      "id": "p19",
+      "name": "Madder Nehru Coat",
+      "category": "Coats",
+      "type": "coat",
+      "color": "#8b3a3a",
+      "price": 5200,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "wedding-edit",
+      "desc": "Silk-cotton bandhgala coat in madder red, hand-finished buttonholes, worn over a kurta for festive occasions.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-212557.png",
+        "images/screenshot-2026-09-25-212612.png"
+      ],
+      "image": "images/screenshot-2026-09-25-212557.png"
+    },
+    {
+      "id": "p20",
+      "name": "Indigo Handloom Trousers",
+      "category": "Pants",
+      "type": "pants",
+      "color": "#1b2a4a",
+      "price": 1650,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Straight-fit handloom cotton trousers, indigo dyed, elastic-and-drawstring waist.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-212754.png",
+        "images/screenshot-2026-09-25-212811.png",
+        "images/screenshot-2026-09-25-212919.png"
+      ],
+      "image": "images/screenshot-2026-09-25-212754.png"
+    },
+    {
+      "id": "p21",
+      "name": "Khadi Drawstring Pants",
+      "category": "Pants",
+      "type": "pants",
+      "color": "#f3ede1",
+      "price": 1350,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "collection": "new-season",
+      "desc": "Relaxed-fit undyed khadi pants with a drawstring waist and tapered ankle, breathable for daily wear.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-213712.png",
+        "images/screenshot-2026-09-25-213722.png",
+        "images/screenshot-2026-09-25-213730.png",
+        "images/screenshot-2026-09-25-213740.png"
+      ],
+      "image": "images/screenshot-2026-09-25-213712.png"
+    },
+    {
+      "id": "p22",
+      "name": "Charcoal Handloom Trousers",
+      "category": "Pants",
+      "type": "pants",
+      "color": "#26221d",
+      "price": 1750,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Tailored handloom cotton trousers in charcoal, side pockets, works as smart-casual wear with a shirt.",
+      "gender": "Men",
+      "images": [
+        "images/screenshot-2026-09-25-213519.png",
+        "images/screenshot-2026-09-25-213528.png",
+        "images/screenshot-2026-09-25-213538.png",
+        "images/screenshot-2026-09-25-213548.png",
+        "images/screenshot-2026-09-25-213554.png"
+      ],
+      "image": "images/screenshot-2026-09-25-213519.png"
+    },
+    {
+      "id": "p23",
+      "name": "Madder Cushion Cover Set",
+      "category": "Home Textiles",
+      "type": "home",
+      "color": "#8b3a3a",
+      "price": 1200,
+      "sizes": [
+        "Set of 2"
+      ],
+      "collection": "everyday-classics",
+      "desc": "Handloom cotton cushion covers, madder dyed, with a woven jute-thread trim.",
+      "images": [
+        "images/screenshot-2026-09-25-213322.png",
+        "images/screenshot-2026-09-25-213332.png",
+        "images/screenshot-2026-09-25-213340.png",
+        "images/screenshot-2026-09-25-213357.png",
+        "images/screenshot-2026-09-25-213406.png"
+      ],
+      "gender": null,
+      "image": "images/screenshot-2026-09-25-213322.png"
+    },
+    {
+      "id": "p24",
+      "name": "Indigo Table Runner",
+      "category": "Home Textiles",
+      "type": "home",
+      "color": "#1b2a4a",
+      "price": 980,
+      "sizes": [
+        "One size"
+      ],
+      "collection": "new-season",
+      "desc": "Handwoven cotton table runner in resist-dye indigo, finished with a hand-rolled hem.",
+      "images": [
+        "images/screenshot-2026-09-25-213204.png",
+        "images/screenshot-2026-09-25-213212.png"
+      ],
+      "gender": null,
+      "image": "images/screenshot-2026-09-25-213204.png"
+    },
+    {
+      "id": "p25",
+      "name": "Turmeric Throw Blanket",
+      "category": "Home Textiles",
+      "type": "home",
+      "color": "#d9a441",
+      "price": 500,
+      "sizes": [
+        "One size"
+      ],
+      "collection": "winter-warmers",
+      "desc": "Handloom cotton throw, turmeric and marigold dyed, woven in a soft double-cloth weave for winter evenings.",
+      "images": [
+        "images/screenshot-2026-09-23-213017.png",
+        "images/screenshot-2026-09-23-213038.png",
+        "images/screenshot-2026-09-23-213106.png"
+      ],
+      "gender": null,
+      "image": "images/screenshot-2026-09-23-213017.png"
+    }
+  ],
+  "orders": [
+    {
+      "id": "HH565679",
+      "customerId": "cmub8ick44e4l",
+      "customerName": "Aleena Antony",
+      "address": "kolanchery house muravanthuruth vadakkaekara po ernakulam",
+      "phone": "6282898955",
+      "payment": "cod",
+      "items": [
+        {
+          "id": "p2",
+          "name": "Turmeric Field Kurta",
+          "size": "S",
+          "price": 1750,
+          "qty": 1
+        },
+        {
+          "id": "p3",
+          "name": "Madder Root Kurta",
+          "size": "M",
+          "price": 2100,
+          "qty": 1
+        }
+      ],
+      "total": 3850,
+      "status": "out_for_delivery",
+      "statusHistory": [
+        {
+          "status": "placed",
+          "at": "2026-09-21T15:43:05.024Z"
+        },
+        {
+          "status": "out_for_delivery",
+          "at": "2026-09-24T09:53:39.512Z"
+        }
+      ],
+      "trackingId": "HHT801342770",
+      "expectedDelivery": "2026-09-28",
+      "courier": {
+        "name": "",
+        "phone": "",
+        "trackingUrl": ""
+      },
+      "shippingNote": "",
+      "createdAt": "2026-09-21T15:43:05.024Z",
+      "updatedAt": "2026-10-24T09:20:52.036Z"
+    },
+    {
+      "id": "HH994557",
+      "customerId": "cmv0ta533xjhz",
+      "customerName": "Aleena Antony",
+      "address": "srtgtrg",
+      "phone": "8592934327",
+      "payment": "upi",
+      "items": [
+        {
+          "id": "p9",
+          "name": "Bridal Madder Silk Saree",
+          "size": "Free size",
+          "price": 8900,
+          "qty": 1
+        }
+      ],
+      "total": 8900,
+      "status": "placed",
+      "statusHistory": [
+        {
+          "status": "placed",
+          "at": "2026-10-09T10:17:47.411Z"
+        }
+      ],
+      "trackingId": "HHT337168513",
+      "expectedDelivery": "2026-10-16",
+      "courier": {
+        "name": "",
+        "phone": "",
+        "trackingUrl": ""
+      },
+      "shippingNote": "",
+      "createdAt": "2026-10-09T10:17:47.411Z",
+      "updatedAt": "2026-10-09T10:17:47.411Z"
+    }
+  ],
+  "reviews": [],
+  "tickets": [],
+  "nextProductNumericId": 1000
+}
